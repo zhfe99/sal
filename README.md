@@ -9,6 +9,13 @@ This page contains software and instructions for
 Installation
 ============
 
+The code is divided into two parts: **Part 1** is hosted on Microsoft's
+website, containing the core implementation of the space-time saliency
+method; **Part 2** is hosted on GitHub, containing the auxiliary files
+(including library, toolbox, a video and a demo) to use this code. You
+need to download both parts and unzip them in the same folder (eg,
+`./sal`).
+
 1. unzip `sal.zip` to your folder;
 2. Run `make.m` to compile all C++ files;
 3. Run `addPath.m` to add sub-directories into the path of Matlab.
@@ -17,13 +24,15 @@ Installation
 
 Instructions
 ============
+
 The package of `sal.zip` contains the following files and folders:
 - `./data`: This folder contains a video sequence as example.
-- `./core`: This folder contains the main implementation of the space-time and HACA.
+- `./core`: This folder contains the main implementation of the space-time saliency algorithm.
+- `./src`: This folder contains a wrapper of the space-time saliency for any video input.
 - `./lib`: This folder contains some necessary library functions.
 - `./make.m`: Matlab makefile for C++ code.
 - `./addPath.m`: Adds the sub-directories into the path of Matlab.
-- `./demoSal.m`: A demo file for generating visualizing the saliency for a video.
+- `./demoSal.m`: A demo file for generating and visualizing the saliency for a video input.
 
 References
 ==========
