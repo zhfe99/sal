@@ -16,7 +16,7 @@ method; **Part 2** is hosted on GitHub, containing the auxiliary files
 need to download both parts and unzip them in the same folder (eg,
 `./sal`).
 
-1. unzip `sal.zip` to your folder;
+1. set `sal` to your current folder;
 2. Run `make.m` to compile all C++ files;
 3. Run `addPath.m` to add sub-directories into the path of Matlab.
 4. Run `demoSal.m` file.
