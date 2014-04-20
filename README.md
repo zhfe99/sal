@@ -4,8 +4,6 @@ Introduction
 This page contains software and instructions for
 [Space-Time Saliency](http://www.f-zhou.com/tm.html) [1].
 
-[1] F. Zhou, F. de la Torre, and J. K. Hodgins, "Aligned cluster analysis for temporal segmentation of human motion," in International Conference on Automatic Face and Gesture Recognition (FG), 2008.
-
 Installation
 ============
 
