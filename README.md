@@ -14,8 +14,8 @@ method; **Part 2** is hosted on GitHub, containing the auxiliary files
 need to download both parts and unzip them in the same folder (eg,
 `./sal`).
 
-1. set `sal` to your current folder;
-2. Run `make.m` to compile all C++ files;
+1. set `sal` to your current folder in Matlab;
+2. Run `make.m` in Matlab to compile all C++ files;
 3. Run `addPath.m` to add sub-directories into the path of Matlab.
 4. Run `demoSal.m` file.
 
@@ -23,7 +23,7 @@ need to download both parts and unzip them in the same folder (eg,
 Instructions
 ============
 
-The package of `sal.zip` contains the following files and folders:
+The package contains the following files and folders:
 - `./data`: This folder contains a video sequence as example.
 - `./core`: This folder contains the main implementation of the space-time saliency algorithm.
 - `./src`: This folder contains a wrapper of the space-time saliency for any video input.
@@ -48,12 +48,11 @@ Copyright
 This software is free for use in research projects. If you publish
 results obtained using this software, please use this citation.
 
-    @inproceedings{Zhou_2008_6155,
-    author    = {Feng Zhou and Fernando De la Torre and Jessica K. Hodgins},
-    title     = {Aligned Cluster Analysis for Temporal Segmentation of Human Motion},
-    booktitle = {IEEE Conference on Automatic Face and Gestures Recognition (FG)},
-    month     = {September},
-    year      = {2008},
+    @inproceedings{ZhouKC14,
+    author    = {F. Zhou and S.-B. Kang and M. Cohen},
+    title     = {Time-Mapping Using Space-Time Saliency},
+    booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year      = {2014},
     }
 
 If you have any question, please feel free to contact Feng Zhou (zhfe99@gmail.com).
