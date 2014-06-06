@@ -7,9 +7,10 @@ This page contains software and instructions for
 Installation
 ============
 
-The code is divided into two parts: **Part 1** is hosted on Microsoft's
-website, containing the core implementation of the space-time saliency
-method; **Part 2** is hosted on GitHub, containing the auxiliary files
+The code is divided into two parts: **Part 1** is hosted on
+[Microsoft's website](http://research.microsoft.com/en-us/downloads/fb4b79ae-7f9d-4732-a9e1-5308b8771a18/),
+containing the core implementation of the space-time saliency method;
+**Part 2** is hosted on GitHub, containing the auxiliary files
 (including library, toolbox, a video and a demo) to use this code. You
 need to download both parts and unzip them in the same folder (eg,
 `./sal`).

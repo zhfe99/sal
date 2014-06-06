@@ -1,0 +1,4 @@
+*.mexa64
+*.mexmaci64
+*.eps
+.DS_Store
