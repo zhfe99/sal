@@ -2,7 +2,7 @@
 %
 % History
 %   create     -  Feng Zhou (zhfe99@gmail.com), 07-03-2013
-%   modify     -  Feng Zhou (zhfe99@gmail.com), 06-05-2014
+%   modify     -  Feng Zhou (zhfe99@gmail.com), 06-06-2014
 
 clear variables;
 prSet(4);
@@ -13,7 +13,7 @@ nm = 'eli_walk';      % The real video file is located at "./data/misv/eli_walk.
 src = misvSrc(nm);
     
 %% run
-[wsSal, wsSmp, wsFlow, wsAcc, wsBk, wsSals, wsVoxs, wsSegs] = misvAllSal(src);
+[wsSal, wsSmp] = misvAllSal(src);
 
 %% animate
 anMisvSal(src, wsSmp, wsSal);

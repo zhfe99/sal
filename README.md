@@ -33,6 +33,10 @@ The package contains the following files and folders:
 - `./addPath.m`: Adds the sub-directories into the path of Matlab.
 - `./demoSal.m`: A demo file for generating and visualizing the saliency for a video input.
 
+FAQs
+====
+
+
 References
 ==========
 

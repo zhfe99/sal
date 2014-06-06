@@ -2,3 +2,5 @@
 *.mexmaci64
 *.eps
 .DS_Store
+save/*
+core/*
