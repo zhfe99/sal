@@ -29,6 +29,7 @@ The package contains the following files and folders:
 - `./core`: This folder contains the main implementation of the space-time saliency algorithm.
 - `./src`: This folder contains a wrapper of the space-time saliency for any video input.
 - `./lib`: This folder contains some necessary library functions.
+- `./tool`: This folder contains some 3rd party toolboxes.
 - `./make.m`: Matlab makefile for C++ code.
 - `./addPath.m`: Adds the sub-directories into the path of Matlab.
 - `./demoSal.m`: A demo file for generating and visualizing the saliency for a video input.
