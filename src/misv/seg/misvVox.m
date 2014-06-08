@@ -1,21 +1,30 @@
 function wsVox = misvVox(src, wsFlow, parVox, varargin)
-% Over-segment the HS sequence into super-voxels.
+% Over-segment the video sequence into super-voxels.
 %
 % Input
-%   src     -  hs src
-%   parVox  -  voxel parameter
+%   src      -  video src
+%   wsFlow   -  optical flow (in most case, we don't use optical flow in this step)
+%   parVox   -  voxel parameter (see the documentation of LIBSVX for more details)
+%     wMa    -  {400}
+%     c      -  {5}
+%     c_reg  -  {200}
+%     mi     -  {100}
+%     sigma  -  {0.5}
+%     range  -  {10}
+%     nL     -  {20}
+%     cl     -  {'hsv'} | 'lab'
 %   varargin
 %     save option
 %
 % Output
-%   wsVox   -  voxel result
-%     Ls    -  label
-%     mSeg  -  #segments
-%     A     -  adjacency matrix, mSeg x mSeg
+%   wsVox    -  voxel result
+%     Ls     -  label
+%     mSeg   -  #segments
+%     A      -  adjacency matrix, mSeg x mSeg
 %
 % History
-%   create  -  Feng Zhou (zhfe99@gmail.com), 05-23-2013
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 03-11-2014
+%   create   -  Feng Zhou (zhfe99@gmail.com), 05-23-2013
+%   modify   -  Feng Zhou (zhfe99@gmail.com), 06-08-2014
 
 % function option
 wMa = ps(parVox, 'wMa', 400);
@@ -68,7 +77,7 @@ wsPath = misvPathVox(src, parVox);
 [ppmpath, cmd] = stFld(wsPath, 'ppm', 'cmd');
 
 % convert to ppm file
-if 0 || ~exist(ppmpath, 'dir')
+if ~exist(ppmpath, 'dir')
     pr('convert to ppm');
     reMkdir(ppmpath);
     for pF = 1 : nF
@@ -91,7 +100,7 @@ if 0 || ~exist(ppmpath, 'dir')
     end
 end
 
-% run
+% run LIBSVX (located in tool/libsvx/gbh_stream_XXX)
 hTi = tic;
 cmdL = sprintf('%s %d %d %d %.2f %d %d %s %s', cmd, c, c_reg, mi, sigma, range, nL, ppmpath, vdopath);
 system(cmdL);
