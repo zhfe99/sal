@@ -31,6 +31,14 @@ cd 'tool/CBSaliency';
 compile;
 cd(path0);
 
-cd 'tool/2009_Thesis_OpticalFlow/mex';
-compile;
+% Compiling of Ce Liu's optical flow toolbox
+% I have test it on Mac and Ubuntu.
+% But it might still generate some error on other platforms.
+% Please feel free to skip it and use the compiled mex files from Ce Liu's website (http://people.csail.mit.edu/celiu/OpticalFlow/)
+if ispc
+    cd 'tool/2009_Thesis_OpticalFlow/mex_win';
+else
+    cd 'tool/2009_Thesis_OpticalFlow/mex';
+end
+mex Coarse2FineTwoFrames.cpp OpticalFlow.cpp GaussianPyramid.cpp
 cd(path0);

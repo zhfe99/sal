@@ -24,7 +24,7 @@ function wsVox = misvVox(src, wsFlow, parVox, varargin)
 %
 % History
 %   create   -  Feng Zhou (zhfe99@gmail.com), 05-23-2013
-%   modify   -  Feng Zhou (zhfe99@gmail.com), 06-08-2014
+%   modify   -  Feng Zhou (zhfe99@gmail.com), 06-09-2014
 
 % function option
 wMa = ps(parVox, 'wMa', 400);
@@ -103,7 +103,10 @@ end
 % run LIBSVX (located in tool/libsvx/gbh_stream_XXX)
 hTi = tic;
 cmdL = sprintf('%s %d %d %d %.2f %d %d %s %s', cmd, c, c_reg, mi, sigma, range, nL, ppmpath, vdopath);
-system(cmdL);
+status = system(cmdL);
+if status ~= 0
+    error('error in running the system cmd:\n%s\n', cmdL);
+end
 
 % save info.mat
 infopath = sprintf('%s/info.mat', vdopath);
