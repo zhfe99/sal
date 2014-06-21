@@ -1,7 +1,7 @@
 #include "OpticalFlow.h"
 #include "ImageProcessing.h"
 #include "GaussianPyramid.h"
-#include <cstdlib> 
+#include <cstdlib>
 #include <iostream>
 
 
@@ -46,7 +46,7 @@ void OpticalFlow::getDxs(DImage &imdx, DImage &imdy, DImage &imdt, const DImage 
 		//Im.dy(imdy,true);
 		//imdt.Subtract(im2,im1);
 		DImage Im1,Im2,Im;
-		
+
 		im1.imfilter_hv(Im1,gfilter,2,gfilter,2);
 		im2.imfilter_hv(Im2,gfilter,2,gfilter,2);
 		Im.copyData(Im1);
@@ -55,7 +55,7 @@ void OpticalFlow::getDxs(DImage &imdx, DImage &imdy, DImage &imdt, const DImage 
 		//Im.Multiplywith(0.5);
 		//Im1.copyData(im1);
 		//Im2.copyData(im2);
-    
+
 		Im.dx(imdx,true);
 		Im.dy(imdy,true);
 		imdt.Subtract(Im2,Im1);
@@ -64,13 +64,13 @@ void OpticalFlow::getDxs(DImage &imdx, DImage &imdy, DImage &imdt, const DImage 
 	{
 		// Im1 and Im2 are the smoothed version of im1 and im2
 		DImage Im1,Im2;
-		
+
 		im1.imfilter_hv(Im1,gfilter,2,gfilter,2);
 		im2.imfilter_hv(Im2,gfilter,2,gfilter,2);
 
 		//Im1.copyData(im1);
 		//Im2.copyData(im2);
-    
+
 		Im2.dx(imdx,true);
 		Im2.dy(imdy,true);
 		imdt.Subtract(Im2,Im1);
@@ -189,9 +189,9 @@ void OpticalFlow::genInImageMask(DImage &mask, const DImage &flow,int interval)
 //     Im1, Im2:						frame 1 and frame 2
 //	warpIm2:						the warped frame 2 according to the current flow field u and v
 //	u,v:									the current flow field, NOTICE that they are also output arguments
-//	
+//
 //--------------------------------------------------------------------------------------------------------
-void OpticalFlow::SmoothFlowSOR(const DImage &Im1, const DImage &Im2, DImage &warpIm2, DImage &u, DImage &v, 
+void OpticalFlow::SmoothFlowSOR(const DImage &Im1, const DImage &Im2, DImage &warpIm2, DImage &u, DImage &v,
 																    double alpha, int nOuterFPIterations, int nInnerFPIterations, int nSORIterations)
 {
 	DImage mask,imdx,imdy,imdt;
@@ -281,7 +281,7 @@ void OpticalFlow::SmoothFlowSOR(const DImage &Im1, const DImage &Im2, DImage &wa
 			imdtData=imdt.data();
 			duData=du.data();
 			dvData=dv.data();
-		
+
 			double _a  = 10000, _b = 0.1;
 			if(nChannels==1)
 				for(int i=0;i<nPixels;i++)
@@ -386,7 +386,7 @@ void OpticalFlow::SmoothFlowSOR(const DImage &Im1, const DImage &Im2, DImage &wa
 						double sigma1 = 0, sigma2 = 0, coeff = 0;
                         double _weight;
 
-						
+
 						if(j>0)
 						{
                             _weight = phiData[offset-1];
@@ -459,9 +459,9 @@ void OpticalFlow::SmoothFlowSOR(const DImage &Im1, const DImage &Im2, DImage &wa
 //     Im1, Im2:						frame 1 and frame 2
 //	warpIm2:						the warped frame 2 according to the current flow field u and v
 //	u,v:									the current flow field, NOTICE that they are also output arguments
-//	
+//
 //--------------------------------------------------------------------------------------------------------
-void OpticalFlow::SmoothFlowPDE(const DImage &Im1, const DImage &Im2, DImage &warpIm2, DImage &u, DImage &v, 
+void OpticalFlow::SmoothFlowPDE(const DImage &Im1, const DImage &Im2, DImage &warpIm2, DImage &u, DImage &v,
 																    double alpha, int nOuterFPIterations, int nInnerFPIterations, int nCGIterations)
 {
 	DImage mask,imdx,imdy,imdt;
@@ -559,7 +559,7 @@ void OpticalFlow::SmoothFlowPDE(const DImage &Im1, const DImage &Im2, DImage &wa
 			imdtData=imdt.data();
 			duData=du.data();
 			dvData=dv.data();
-		
+
 			double _a  = 10000, _b = 0.1;
 			if(nChannels==1)
 				for(int i=0;i<nPixels;i++)
@@ -719,7 +719,7 @@ void OpticalFlow::SmoothFlowPDE(const DImage &Im1, const DImage &Im2, DImage &wa
 
 				double beta;
 				beta=rou[k]/(p1.innerproduct(q1)+p2.innerproduct(q2));
-				
+
 				du.Add(p1,beta);
 				dv.Add(p2,beta);
 
@@ -730,7 +730,7 @@ void OpticalFlow::SmoothFlowPDE(const DImage &Im1, const DImage &Im2, DImage &wa
 			// end of conjugate gradient algorithm
 			//-----------------------------------------------------------------------
 		}// end of inner fixed point iteration
-		
+
 		// the following procedure is merely for debugging
 		//cout<<"du "<<du.norm2()<<" dv "<<dv.norm2()<<endl;
 		// update the flow field
@@ -830,7 +830,7 @@ void OpticalFlow::estLaplacianNoise(const DImage& Im1,const DImage& Im2,Vector<d
 		for(int k = 0;k<nChannels;k++)
 		{
 			int offset = i*nChannels+k;
-			temp= abs(Im1.data()[offset]-Im2.data()[offset]);
+			temp= fabs(Im1.data()[offset]-Im2.data()[offset]);
 			if(temp>0 && temp<1000000)
 			{
 				para[k] += temp;
@@ -861,12 +861,12 @@ void OpticalFlow::Laplacian(DImage &output, const DImage &input, const DImage& w
 		cout<<"Error in image dimension matching OpticalFlow::Laplacian()!"<<endl;
 		return;
 	}
-	
+
 	const _FlowPrecision *inputData=input.data(),*weightData=weight.data();
 	int width=input.width(),height=input.height();
 	DImage foo(width,height);
 	_FlowPrecision *fooData=foo.data(),*outputData=output.data();
-	
+
 
 	// horizontal filtering
 	for(int i=0;i<height;i++)
@@ -938,7 +938,7 @@ void OpticalFlow::testLaplacian(int dim)
 //--------------------------------------------------------------------------------------
 // function to perfomr coarse to fine optical flow estimation
 //--------------------------------------------------------------------------------------
-void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const DImage &Im1, const DImage &Im2, double alpha, double ratio, int minWidth, 
+void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const DImage &Im1, const DImage &Im2, double alpha, double ratio, int minWidth,
 																	 int nOuterFPIterations, int nInnerFPIterations, int nCGIterations)
 {
 	// first build the pyramid of the two images
@@ -950,7 +950,7 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 	GPyramid2.ConstructPyramid(Im2,ratio,minWidth);
 	if(IsDisplay)
 		cout<<"done!"<<endl;
-	
+
 	// now iterate from the top level to the bottom
 	DImage Image1,Image2,WarpImage2;
 	//GaussianMixture GMPara(Im1.nchannels()+2);
@@ -998,7 +998,7 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 		}
 		//SmoothFlowPDE(GPyramid1.Image(k),GPyramid2.Image(k),warpI2,vx,vy,alpha,nOuterFPIterations,nInnerFPIterations,nCGIterations);
 		//SmoothFlowPDE(Image1,Image2,WarpImage2,vx,vy,alpha*pow((1/ratio),k),nOuterFPIterations,nInnerFPIterations,nCGIterations,GMPara);
-		
+
 		//SmoothFlowPDE(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations,nInnerFPIterations,nCGIterations);
 		SmoothFlowSOR(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations+k,nInnerFPIterations,nCGIterations+k*3);
 
@@ -1011,7 +1011,7 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 	warpI2.threshold();
 }
 
-void OpticalFlow::Coarse2FineFlowLevel(DImage &vx, DImage &vy, DImage &warpI2,const DImage &Im1, const DImage &Im2, double alpha, double ratio, int nLevels, 
+void OpticalFlow::Coarse2FineFlowLevel(DImage &vx, DImage &vy, DImage &warpI2,const DImage &Im1, const DImage &Im2, double alpha, double ratio, int nLevels,
 																	 int nOuterFPIterations, int nInnerFPIterations, int nCGIterations)
 {
 	// first build the pyramid of the two images
@@ -1031,7 +1031,7 @@ void OpticalFlow::Coarse2FineFlowLevel(DImage &vx, DImage &vy, DImage &warpI2,co
 
 	if(IsDisplay)
 		cout<<"done!"<<endl;
-	
+
 	// now iterate from the top level to the bottom
 	DImage Image1,Image2,WarpImage2;
 
@@ -1070,7 +1070,7 @@ void OpticalFlow::Coarse2FineFlowLevel(DImage &vx, DImage &vy, DImage &warpI2,co
 			Image2.warpImageBicubicRef(Image1,WarpImage2,vx,vy);
 		//SmoothFlowPDE(GPyramid1.Image(k),GPyramid2.Image(k),warpI2,vx,vy,alpha,nOuterFPIterations,nInnerFPIterations,nCGIterations);
 		//SmoothFlowPDE(Image1,Image2,WarpImage2,vx,vy,alpha*pow((1/ratio),k),nOuterFPIterations,nInnerFPIterations,nCGIterations,GMPara);
-		
+
 		SmoothFlowPDE(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations,nInnerFPIterations,nCGIterations);
 		//GMPara.display();
 		if(IsDisplay)
