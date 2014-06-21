@@ -2,7 +2,7 @@ addpath('mex');
 
 % we provide two sequences "car" and "table"
 example = 'table';
-% example = 'car';
+%example = 'car';
 
 % load the two frames
 im1 = im2double(imread([example '1.jpg']));
@@ -26,6 +26,7 @@ para = [alpha,ratio,minWidth,nOuterFPIterations,nInnerFPIterations,nSORIteration
 tic;
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
 toc
+
 figure;imshow(im1);figure;imshow(warpI2);
 
 

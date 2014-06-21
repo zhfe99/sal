@@ -1,5 +1,5 @@
 function X = seqReduce(X0)
-% Do sequence reduction.
+% Sequence reduction into half length.
 %
 % Input
 %   X0      -  original sequence, dim x n0
@@ -9,7 +9,7 @@ function X = seqReduce(X0)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 10-08-2010
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 10-09-2011
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 06-17-2014
 
 % smooth kernel
 Wt = [.05 .25 .4 .25 .05];

@@ -12,7 +12,7 @@ function [wsSal, wsSmp, wsFlow, wsAcc, wsBk, wsSals, wsVoxs, wsSegs] = misvAllSa
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 07-02-2013
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 03-19-2014
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 03-11-2014
 
 prIn('misvAllSal', 'tag %s', src.tag);
 
@@ -26,24 +26,24 @@ wsVdo = misvVdo(src, 'svL', 2);
 wsSmp = misvSmp(src, wsVdo, parSmp, 'svL', 2);
 
 % flow
-wsFlow = misvFlow(src, parFlow, 'svL', 2);
+wsFlow = misvFlow(src, parFlow, 'svL', 1);
 
 % acc
-wsAcc = misvFlowAcc(src, wsFlow, parAcc, 'svL', 2);
+wsAcc = misvFlowAcc(src, wsFlow, parAcc, 'svL', 1);
 
 % bk
-wsBk = misvBk(src, parBk, 'svL', 2);
+wsBk = misvBk(src, parBk, 'svL', 1);
 
 % seg & sal
 mL = length(parVoxs);
 [wsVoxs, wsSegs, wsSals] = cellss(1, mL);
 for iL = 1 : mL
-    wsVoxs{iL} = misvVox(src, wsFlow, parVoxs{iL}, 'svL', 2);
-    wsSegs{iL} = misvSegL(src, wsVoxs{iL}, parSeg, 'svL', 2);
-    wsSals{iL} = misvSalL(src, wsSmp, wsFlow, wsAcc, wsBk, wsSegs{iL}, parSal, 'svL', 2);
+    wsVoxs{iL} = misvVox(src, wsFlow, parVoxs{iL}, 'svL', 1);
+    wsSegs{iL} = misvSegL(src, wsVoxs{iL}, parSeg, 'svL', 1);
+    wsSals{iL} = misvSalL(src, wsSmp, wsFlow, wsAcc, wsBk, wsSegs{iL}, parSal, 'svL', 1);
 end
 
 % combine
-wsSal = misvSalCmb(src, wsSmp, wsSegs, wsSals, parSal, 'svL', 2);
+wsSal = misvSalCmb(src, wsSmp, wsSegs, wsSals, parSal, 'svL', 1);
 
 prOut;

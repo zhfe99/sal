@@ -4,15 +4,13 @@ function X = seqMean(Xs, P)
 % Input
 %   X0s     -  original sequence, 1 x m (cell), dim x n
 %   P       -  warping path, l x m | 1 x m (cell), li x 1
-%   par     -  parameter
-%     inp   -  interpolation algorithm, {'exact'} | 'nearest' | 'linear'
 %
 % Output
 %   Xs      -  new sequence, 1 x m (cell), dim x li
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 10-06-2010
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 10-09-2011
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 05-26-2014
 
 % dimension
 dim = size(Xs{1}, 1);

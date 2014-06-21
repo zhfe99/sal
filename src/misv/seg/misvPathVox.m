@@ -12,7 +12,7 @@ function wsPath = misvPathVox(src, parVox)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 05-29-2013
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 06-10-2014
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 04-19-2014
 
 % specified in addPath.m
 global footpath;
@@ -32,12 +32,7 @@ end
 
 % cmd path
 if ispc
-    s = computer;
-    if strcmp(s(end - 1 : end), '64')
-        subx = 'win64.exe';
-    else
-        subx = 'win32.exe';
-    end
+    subx = 'win';
 elseif ismac
     subx = 'osx';
 else

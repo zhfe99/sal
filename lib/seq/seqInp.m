@@ -21,7 +21,7 @@ function Xs = seqInp(X0s, P, par)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 10-06-2010
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 06-17-2013
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 06-16-2014
 
 % function parameter
 inp = ps(par, 'inp', 'exact');
@@ -51,7 +51,7 @@ for i = 1 : m
 
     %% exact replication
     if strcmp(inp, 'exact')
-        Xs{i} = X0(:, p);
+        Xs{i} = X0(:, round(p));
 
         %% continous interpolation
     else

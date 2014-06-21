@@ -3,8 +3,9 @@ function [X, me] = cenX(X0, dire)
 %
 % Input
 %   X0      -  original sample matrix, dim x n
-%   dire    -  1 or non-indicated means the samples are stored in the columns
-%           -  2 means in the rows
+%   dire    -  column-wise or row-wise sample arrangement in matrix, {1} | 0
+%                1: column-wise arrangment, X0(:, i) is i-th sample
+%                2: row-wise arrangment, X0(i, :) is i-th sample
 %
 % Output
 %   X       -  new sample matrix, dim x n
@@ -12,9 +13,9 @@ function [X, me] = cenX(X0, dire)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 01-19-2009
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 10-09-2011
+%   modify  -  Feng Zhou (zhfe99@gmail.com), 05-22-2014
 
-% feature direction
+% default dire
 if ~exist('dire', 'var')
     dire = 1;
 end

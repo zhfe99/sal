@@ -15,7 +15,7 @@ function [parSmp, parFlow, parAcc, parBk, parVoxs, parSeg, parSal] = misvParSal(
 %
 % History
 %   create   -  Feng Zhou (zhfe99@gmail.com), 06-02-2013
-%   modify   -  Feng Zhou (zhfe99@gmail.com), 03-19-2014
+%   modify   -  Feng Zhou (zhfe99@gmail.com), 03-11-2014
 
 % src
 tag = src.tag;
@@ -34,6 +34,12 @@ parFlow = st('alg', 'liu', 'wMa', wMa, 'wF', wF, 'dire', 'both');
 parBk = st('wMa', wMa, 'wF', 200, 'dire', 'both', 'th', 10);
 
 % default voxel parameter
+% c = 5;
+% c_reg = 200;
+% mi = 100;
+% sigma = 0.5;
+% range = 10;
+% nL = 20;
 c_reg = 200; % not used
 range = 10;
 parVox = st('wMa', wMa, 'c_reg', c_reg, 'range', range, 'nL', 0, 'cl', 'hsv');

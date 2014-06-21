@@ -3,8 +3,8 @@ function a = stAdd(a, varargin)
 %
 % Example
 %   input     -  a.name = 'feng';
-%   call      -  a = stFld(a, 'age', 25, 'gender', 'male');
-%   input     -  a.name = 'feng';
+%   call      -  a = stAdd(a, 'age', 25, 'gender', 'male');
+%   output    -  a.name = 'feng';
 %                a.age = 25;
 %                a.gender = 'male'.
 %
@@ -17,7 +17,7 @@ function a = stAdd(a, varargin)
 %
 % History
 %   create    -  Feng Zhou (zhfe99@gmail.com), 02-01-2009
-%   modify    -  Feng Zhou (zhfe99@gmail.com), 07-23-2013
+%   modify    -  Feng Zhou (zhfe99@gmail.com), 05-25-2014
 
 m = round(length(varargin) / 2);
 for i = 1 : m
