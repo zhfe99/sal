@@ -25,7 +25,7 @@ Instructions
 ============
 
 The package contains the following files and folders:
-- `./data`: This folder contains a video sequence as example.
+- `./data`: This folder contains several video sequence as examples.
 - `./core`: This folder contains the main implementation of the space-time saliency algorithm.
 - `./src`: This folder contains a wrapper of the space-time saliency for any video input.
 - `./lib`: This folder contains some necessary library functions.
