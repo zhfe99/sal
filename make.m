@@ -22,13 +22,12 @@ mex computeRegionMag_fast.cpp;
 mex computeRegionSpa_fast.cpp;
 mex maskRegCen.cpp;
 mex maskRegConn.cpp;
-% mex maskRegOver.cpp;
 mex maskRegStat.cpp;
 mex maskSegRel.cpp;
-cd(path0);
-
-cd 'tool/CBSaliency';
-compile;
+mex mexMergeAdjacentRegions.cpp
+mex relabel_L_fast.cpp
+cd ./segment
+mex mexSegment.cpp
 cd(path0);
 
 % Compiling of Ce Liu's optical flow toolbox
